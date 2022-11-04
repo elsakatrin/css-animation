@@ -1,0 +1,232 @@
+*, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+	background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+/* Header keeps both of the animated texts that apppear at the top */
+header{
+	margin-top: 45px;
+	margin-bottom: 50px;
+}
+/* This is the animated text that comes in on reload, it slides in forward */
+.xmas{
+	font-size: 60px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-left: 50%;
+	transform: translateX(-200%);
+	opacity: 0;
+	animation: slide-in-anim 1500ms ease-out forwards;
+}
+
+@keyframes slide-in-anim {
+	60% {
+		transform: translateX(-45%);
+	}
+	75% {
+		transform: translateX(-52%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(-50%);
+	}
+}
+
+.soon{
+    font-size: 30px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	margin-left: 50%;
+	transform: translateX(-200%);
+	opacity: 0;
+	animation: slide-in-anim 3000ms ease-in-out forwards;
+}
+
+@keyframes slide-in-anim {
+
+	60% {
+		transform: translateX(-45%);
+	}
+	75% {
+		transform: translateX(-52%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(-50%);
+	}
+}
+/* This keeps the counter and the christmas tree */
+.middle{
+	display: flex;
+	width: 250px;
+	justify-content: center;
+	position: relative;
+	margin: auto;
+	margin-bottom: 40px;
+}
+
+#count {
+	display: block;
+	border: solid black 1px;
+	text-align: center;
+	margin-top: 30px;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 8px;
+	margin-left: 0px;
+}
+/* The tree spins on hover, it goes a bit slower to begin with (5s) and spins fast back (1s)  */
+.treeicon{
+	width: 60px;
+	position: absolute;
+	right: 0px;
+	padding-left: 20px;
+	cursor: pointer;
+	transition: 5s, 1s;
+}
+
+.treeicon:hover {
+	transform: rotate(1360deg);
+	transition: 5s;
+}
+/* Here the cards come in */
+.all-cards{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 20px;
+	margin-inline: auto;
+}
+
+/* This is for all images on the website - both card images and movie images */
+img{
+	width: 450px;
+	height: 600px;
+	border-radius: 8px;
+}
+/* This is the card itself */
+.card {
+	display: block;
+	position: relative;
+	background-color: #DCD9D4;
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+	background-blend-mode: soft-light,screen;
+	width: 450px;
+	height: 600px;
+	perspective: 1000px;
+	margin: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+ /* Here we put the transition styles on the cards so it can flip */
+.card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+	border-radius: 8px;
+}
+/* And how the card rotates */
+.card:hover .card-inner{
+	transform: rotateY(180deg);
+}
+
+.card-front, 
+.flip-back{
+position:absolute;
+width: 100%;
+height: 100%;
+backface-visibility: hidden;
+border-radius: 8px;
+}
+
+
+/* And how the card flips back */
+.flip-back{
+	transform: rotateY(180deg);
+}
+
+
+/* This is the caption inside the cards */
+.julelads, .cookies, .hotkako{
+	padding-top: 25px;
+	margin-left: 15px;
+	text-align: center;
+}
+/* And the paragraph inside it */
+.inner-text{
+	text-align:left;
+	margin-top: 15px;
+	margin-left: 40px;
+	margin-right: 40px;
+	line-height: 20px;
+}
+/* Here I put some christmas lyrics that fades in on reload */
+.lyric{
+	text-align: center;
+	font-size: 40px;
+	animation: fadeIn 5s;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	font-weight: lighter;
+}
+@keyframes fadeIn{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
+
+/* Text above movie posters  */
+.kick{
+	padding-top: 5%;
+	padding-bottom: 3%;
+	text-align: center;
+	font-size: 22px;
+	font-weight: lighter;
+}
+/* Div over all movies */
+.movies {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10%;
+}
+/* I put hover effect over the movie posters */
+.movie{
+	margin: 10px;
+	opacity: 50%;
+}
+
+.movie:hover{
+	opacity: 100%;
+	transition: opacity 1s;
+}
+
+.movietext{
+	text-align: center;
+	text-transform: uppercase;
+}
+/* This makes the cards and posters responsive */
+@media only screen and (max-width: 1424px){
+.all-cards{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-left: 60px;
+	margin-right: 60px;
+}
+.movies{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-left: 60px;
+	margin-right: 60px;
+}
+}
